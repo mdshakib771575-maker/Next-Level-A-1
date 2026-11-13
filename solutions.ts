@@ -1,5 +1,5 @@
 
-// problem 1
+
 
 const multiplyValue = (value: number, multiplier?: number): number => {
     if (typeof multiplier === "number") {
@@ -10,10 +10,7 @@ const multiplyValue = (value: number, multiplier?: number): number => {
     }
 }
 
-// console.log(multiplyValue(5));
 
-
-// problem 2
 
 type Value = number | string | boolean
 const processInput = (value: Value): number | string => {
@@ -32,11 +29,8 @@ const processInput = (value: Value): number | string => {
 
 }
 
-console.log(processInput(true));
 
 
-
-// problem 3
 
 const formatCoordinate = (coordinate: readonly [number, number, string]): string => {
     const latitude = coordinate[0];
@@ -49,18 +43,12 @@ const formatCoordinate = (coordinate: readonly [number, number, string]): string
 
 
 
-
-// problem 4
-
 const concatenateArrays = <T>(...arrays: T[][]): T[] => {
     return arrays.flat();
 };
 
 
-console.log(concatenateArrays(["a", "b"], ["c", "d"]));
-console.log(concatenateArrays([1, 2, 3], [3, 4], [5]));
 
-// problem 5
 
 interface Course {
     title: string;
@@ -88,11 +76,10 @@ const courses: Course[] = [
     { title: "Next.js Pro", students: 85, isPublished: true }
 ];
 
-const result = getPopularCourses(courses, 80);
 
-console.log(result);
 
-// problem 6
+
+
 
 const pluckValues = <T, K extends keyof T>(
     items: T[],
@@ -106,6 +93,53 @@ const users = [
     { id: 2, name: "Sadia", role: "Editor" },
     { id: 3, name: "Tariq", role: "Subscriber" }
 ];
+
+
+
+
+class Employee {
+    protected name: string;
+    private baseSalary: number;
+
+    constructor(name: string, baseSalary: number) {
+        this.name = name;
+        this.baseSalary = baseSalary;
+    }
+
+    getDetails(): string {
+        return `Employee: ${this.name}, Base Salary: ${this.baseSalary}`;
+    }
+}
+
+class Manager extends Employee {
+    private department: string;
+
+    constructor(name: string, baseSalary: number, department: string) {
+        super(name, baseSalary);
+        this.department = department;
+    }
+
+    getRoleInfo(): string {
+        return `Manager of ${this.department}: ${this.name}`;
+    }
+}
+
+
+
+
+
+
+const validateAgeAsync = (age: number): Promise<string> => {
+    return new Promise((resolve, reject) => {
+        if (age >= 18) {
+            setTimeout(() => {
+                resolve("Access Granted");
+            }, 1000);
+        } else {
+            reject(new Error("Access Denied: Must be 18 or older"));
+        }
+    });
+};
 
 
 
